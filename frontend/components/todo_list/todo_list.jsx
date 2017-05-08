@@ -1,15 +1,21 @@
 import React from 'react';
 import TodoListItem from './todo_list_item';
+import TodoForm from './todo_form';
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, receiveTodo, removeTodo }) => {
   const todoList = todos.map((todo, idx) => (
-    <TodoListItem key={ idx } todo={ todo } />
+    <TodoListItem key={ idx } todo={ todo }
+      removeTodo={ removeTodo } />
   ));
 
   return (
-    <ul>
-      { todoList }
-    </ul>
+    <section>
+      <ul>
+        { todoList }
+      </ul>
+
+      <TodoForm receiveTodo={ receiveTodo } />
+    </section>
   );
 };
 
