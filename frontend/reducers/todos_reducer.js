@@ -1,4 +1,5 @@
-import { RECEIVE_TODOS, RECEIVE_TODO, REMOVE_TODO } from '../actions/todo_actions.js';
+import { RECEIVE_TODOS, RECEIVE_TODO, REMOVE_TODO, TOGGLE_TODO }
+  from '../actions/todo_actions.js';
 
 const initialState = {
   1: {
@@ -28,6 +29,10 @@ export function todosReducer(state = initialState, action) {
       newState = Object.assign({}, state);
       delete newState[action.todo.id];
       return newState;
+    case TOGGLE_TODO:
+        newState = Object.assign({}, state);
+        newState[action.todo.id].done = !newState[action.todo.id].done;
+        return newState;
     default:
       return state;
   }
