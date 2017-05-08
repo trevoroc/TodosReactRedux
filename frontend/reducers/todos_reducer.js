@@ -1,3 +1,5 @@
+import { RECEIVE_TODOS, RECEIVE_TODO } from '../actions/todo_actions.js';
+
 const initialState = {
   1: {
     id: 1,
@@ -15,6 +17,12 @@ const initialState = {
 
 export function todosReducer(state = initialState, action) {
   switch(action.type) {
+    case RECEIVE_TODOS:
+      return Object.assign({}, state, action.todos);
+    case RECEIVE_TODO:
+      const newState = {};
+      newState[action.todo.id] = action.todo;
+      return Object.assign({}, state, newState);
     default:
       return state;
   }
