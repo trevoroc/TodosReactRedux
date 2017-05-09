@@ -10,8 +10,8 @@ class StepList extends React.Component {
   render() {
     let { steps, todoId, receiveStep } = this.props;
     let stepContainers = steps.map(step => (
-      <StepListItemContainer key={ step.id } todoId={ todoId }
-        receiveStep={ receiveStep } />
+      <StepListItemContainer key={ step.id }
+        receiveStep={ receiveStep } step={ step } />
     ));
 
     return (
