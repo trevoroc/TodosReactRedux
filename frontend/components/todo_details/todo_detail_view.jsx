@@ -1,4 +1,5 @@
 import React from 'react';
+// import StepListContainer from '../step_list/step_list_container';
 
 class TodoDetailView extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class TodoDetailView extends React.Component {
       <article>
         <p>{ this.props.todo.body }</p>
         <button onClick={this.handleDelete}>Delete</button>
+        // <StepListContainer todo={this.props.todo} />
       </article>
     );
   }
