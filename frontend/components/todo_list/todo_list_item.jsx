@@ -21,8 +21,6 @@ class TodoListItem extends React.Component {
   }
 
   render() {
-    let toggleText = this.props.todo.done
-                      ? "Mark Undone" : "Mark Done";
     let details = this.state.detail
             ? <TodoDetailViewContainer todo={ this.props.todo }/>
             : "";
