@@ -6,8 +6,11 @@ class TodoForm extends React.Component {
     super(props);
     this.state = this.initialState();
 
-    this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    this.handleChangeBody = this.handleChangeBody.bind(this);
+    this.initialState = this.initialState.bind(this);
+    this.handleChangeTitle =
+      this.handleChangeTitle.bind(this);
+    this.handleChangeBody =
+      this.handleChangeBody.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -30,13 +33,22 @@ class TodoForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.receiveTodo(this.state);
-    this.setState(this.initialState());
+    if (this.props.errors.length > 0) { this.props.clearErrors(); }
+    this.props.createTodo(this.state)
+      .then(() => this.setState(this.initialState()));
   }
 
   render() {
+    const errors = this.props.errors.map((error, idx) => (
+      <li key={ idx }>{ error }</li>
+    ));
+
     return (
       <form>
+        <ul>
+          { errors }
+        </ul>
+
         <label>Title</label>
         <input type="text" onChange={ this.handleChangeTitle }
           value={ this.state.title }></input>
