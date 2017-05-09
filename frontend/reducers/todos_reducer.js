@@ -31,7 +31,12 @@ export function todosReducer(state = initialState, action) {
       return newState;
     case TOGGLE_TODO:
         newState = Object.assign({}, state);
-        newState[action.todo.id].done = !newState[action.todo.id].done;
+        let todoKeys = Object.keys(newState);
+        let thisTodoKey = todoKeys.filter(key => (
+          newState[key].id === action.todo.id
+        ))[0];
+        let thisTodo = newState[thisTodoKey];
+        thisTodo.done = !thisTodo.done;
         return newState;
     default:
       return state;

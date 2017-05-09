@@ -3,17 +3,18 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store.js';
 import Root from './components/root.jsx';
 
-// TODO: delete
-import { receiveTodos, receiveTodo } from './actions/todo_actions';
+// TODO: Delete
+import { fetchTodos } from './util/todo_api_util.js';
+import * as TodoActions from './actions/todo_actions';
+window.fetchTodos = fetchTodos;
+window.TodoActions = TodoActions;
 
 const store = configureStore();
 
-// TODO: delete
+// TODO: Delete
 window.store = store;
-window.receiveTodos = receiveTodos;
-window.receiveTodo = receiveTodo;
 
 document.addEventListener("DOMContentLoaded", () => {
-  let root = document.getElementById("root");
-  ReactDOM.render(<Root store={store}/>, root);
+  let content = document.getElementById("content");
+  ReactDOM.render(<Root store={store}/>, content);
 });
