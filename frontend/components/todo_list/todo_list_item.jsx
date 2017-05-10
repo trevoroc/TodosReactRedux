@@ -13,7 +13,8 @@ class TodoListItem extends React.Component {
   }
 
   handleToggle(e) {
-    this.props.toggleTodo(this.props.todo);
+    this.props.todo.done = !this.props.todo.done;
+    this.props.updateTodo(this.props.todo);
   }
 
   handleDetail(e) {

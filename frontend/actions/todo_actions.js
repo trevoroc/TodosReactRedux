@@ -44,3 +44,15 @@ export const createTodo = todo => dispatch => (
     .then(savedTodo => dispatch(receiveTodo(savedTodo)),
           err => dispatch(ErrorActions.receiveErrors(err.responseJSON)))
 );
+
+export const updateTodo = todo => dispatch => (
+  APIUtil.updateTodo(todo)
+    .then(savedTodo => dispatch(receiveTodo(savedTodo)),
+          err => dispatch(ErrorActions.receiveErrors(err.responseJSON)))
+);
+
+export const deleteTodo = todo => dispatch => (
+  APIUtil.deleteTodo(todo)
+    .then(savedTodo => dispatch(removeTodo(savedTodo)),
+          err => dispatch(ErrorActions.receiveErrors(err.responseJSON)))
+);
